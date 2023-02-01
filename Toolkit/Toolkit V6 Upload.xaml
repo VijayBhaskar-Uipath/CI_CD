@@ -1,0 +1,909 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SetFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_StudyName" Type="InArgument(x:String)" />
+    <x:Property Name="in_isEnvProduction" Type="InArgument(x:String)" />
+    <x:Property Name="in_ToolkitLocation" Type="InArgument(x:String)" />
+    <x:Property Name="in_reportId" Type="InArgument(x:String)" />
+    <x:Property Name="in_LogDir" Type="InArgument(x:String)" />
+    <x:Property Name="in_EhrName" Type="InArgument(x:String)" />
+    <x:Property Name="in_ArchivefolderPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1505.6,3322.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="88">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.Vision.Core.OCR</x:String>
+      <x:String>UiPath.Core.Activities.OCR.Engines</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="1516,3257.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="bol_ToolkitUploadSuccess" />
+      <Variable x:TypeArguments="x:Double" Name="ToolkitWaitTime" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="Try Catch-Toolkit Upload" sap:VirtualizedContainerService.HintSize="1453.6,2760.8" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence sap:VirtualizedContainerService.HintSize="1416.8,2529.6" sap2010:WorkflowViewState.IdRef="Sequence_59">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CloseApplication ContinueOnError="True" DisplayName="Close Application 'toolkit-v6-phase2.exe T...'" sap:VirtualizedContainerService.HintSize="1354.4,52.8" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
+            <ui:CloseApplication.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="df62707e-d1a8-4e23-bec8-d12e637748be" InformativeScreenshot="4a399185d06f284572e98ca72bbe3122" Selector="&lt;wnd app='toolkit-v6-phase2.exe' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:CloseApplication.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CloseApplication>
+          <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Application: Toolkit v6  |  PHASE-2" sap:VirtualizedContainerService.HintSize="1354.4,2324.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" ScopeGuid="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Version="V1">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1320.8,2033.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="studyName" />
+                    <Variable x:TypeArguments="x:Boolean" Name="bol_SuccessFolderexists" />
+                    <Variable x:TypeArguments="x:Boolean" Name="bol_todaysDateFolderExists" />
+                    <Variable x:TypeArguments="x:Boolean" Name="bol_EhrFolderExists" />
+                    <Variable x:TypeArguments="x:Boolean" Name="bolSuccessfulUpload" />
+                    <Variable x:TypeArguments="x:String" Name="ToolkitWaitTimeString" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Folder path'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1258.4,52.8" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Text="[in_SetFolderPath]" Version="V1">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="150, 122, 813, 28" ElementType="InputBox" FriendlyName="'editable text'" FullSelectorArgument="&lt;wnd ctrlid='100' /&gt;&lt;ctrl role='editable text' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='100' /&gt;&lt;ctrl role='editable text' automationid='' /&gt;" Guid="17a7ffc2-0732-4791-92e8-a673a8b5e3be" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAzEAAAAgCAYAAAAi9PYjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADrSURBVHhe7dlBCcAwAATB+n9ERETkF1FRkEJVdGEGVsRxz5zzSpIkSVKlZ4xx996SJEmS9PvWWvd7YgAAAArOOUYMAADQYcQAAAApRgwAAJBixAAAAClGDAAAkGLEAAAAKUYMAACQYsQAAAApRgwAAJBixAAAAClGDAAAkGLEAAAAKUYMAACQYsQAAAApRgwAAJBixAAAAClGDAAAkGLEAAAAKUYMAACQYsQAAAApRgwAAJBixAAAAClGDAAAkGLEAAAAKUYMAACQYsQAAAApRgwAAJBixAAAACnfiBlj3L23JEmSJP2+tdZ9AfZfbv8cOXnvAAAAAElFTkSuQmCC" InformativeScreenshot="585178c9d1241382f1a5158c7279cd35.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='libui_uiWindowClass' title='Toolkit v6  |  PHASE-2' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="53, 124, 85, 18" ElementType="Text" FriendlyName="'Folder path'" FullSelectorArgument="&lt;wnd cls='Static' title='Folder path' /&gt;&lt;ctrl name='Folder path' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd cls='Static' title='Folder path' /&gt;&lt;ctrl name='Folder path' role='text' automationid='' check:text='Folder path' /&gt;" ImageBase64="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" SearchSteps="Selector, FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NTypeInto>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Study Name'" sap:VirtualizedContainerService.HintSize="1258.4,52.8" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="147, 162, 819, 29" ElementType="DropDown" FriendlyName="'SKK AD'" FullSelectorArgument="&lt;wnd ctrlid='101' /&gt;&lt;ctrl role='combo box' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='101' /&gt;&lt;ctrl role='combo box' automationid='' /&gt;" Guid="36110cde-2271-4710-9dd2-a8c578ae9f05" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAzcAAAAhCAYAAADktlXBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIPSURBVHhe7dw/S7JRHMfh5432Jppb7DU0BFpzDnFT6427gtCSif9QFxscXdpO/A4UZD7Nx8P1hYvEc3wBH+70XzIzMzMzM6tg4sbMzMzMzKrYd9wcDoe02+0AAADOysfHR26a77h5e3tLTdOk5+dnAACA4j09PaXHx8f0/v6em+ZH3LRtm5bLJQAAQPGm02mOnJNxMxgM0na7BQAAKF4EjrgBAADOnrgBAACqIG4AAIAqiBsAAKAK4gYAAKiCuAEAAKogbgAAgCqIGwAAoBibzSZHSvw9dR7W63VarVa/3hc3AABAMSJa2rZNk8nk5Hl4fX3Nd44DR9wAAABFiCcyLy8v6erqKt3f36fRaPTrznA4THd3d/lO3I3PfJ2JGwAAoAgRKvFUJuLl+vo69Xq9H4ETYdPtdvNZ3Im74gYAAChSfNdmPp+n29vb1Ol0csyMx+MsXsd7cRZ3jr+XI24AAIDizGaz/OTm8vIy3dzcZPE6ntjE2anPiBsAAKA48VQm/u3s4eEhXVxcZP1+P//QwP9+SU3cAAAARfr6gYGmabLjHxA4Jm4AAIBiRcwsFovsr7AJ4gYAAKiCuAEAAKogbgAAgCqIGwAAoAriBgAAqIK4AQAAqiBuAACAKogbAACgCn/GTRxE4AAAAJSubdvUNM3vuNnv9zlwAAAAzsnhcMhN8x03ZmZmZmZm57uUPgHjf0DgYrbRvgAAAABJRU5ErkJggg==" InformativeScreenshot="6b974e1e3101a9de39b869cf91ce114c.png" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='libui_uiWindowClass' title='Toolkit v6  |  PHASE-2' /&gt;" SearchSteps="Selector, FuzzySelector, Image">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="53, 166, 85, 19" ElementType="Text" FriendlyName="'Study Name'" FullSelectorArgument="&lt;wnd cls='Static' title='Study Name' /&gt;&lt;ctrl name='Study Name' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd cls='Static' title='Study Name' /&gt;&lt;ctrl name='Study Name' role='text' automationid='' check:text='Study Name' /&gt;" ImageBase64="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" SearchSteps="Selector, FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                  <Assign sap:VirtualizedContainerService.HintSize="1258.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[studyName]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[in_StudyName]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Study'" sap:VirtualizedContainerService.HintSize="1258.4,52.8" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="0, 113, 816, 19" FriendlyName="'ALZ3'" FullSelectorArgument="[String.Format(&quot;&lt;ctrl name='{0}' role='list item' /&gt;&quot;, studyName)]" FuzzySelectorArgument="[String.Format(&quot;&lt;ctrl name='{0}' role='list item' automationid='' check:text='{0}' /&gt;&quot;, studyName)]" Guid="121a11cd-2621-4882-9dc7-18e830e0e8bc" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAzIAAAAXCAYAAADQvHo1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAATiSURBVHhe7d1/TNR1HMdxc7YyK/FX5qYu1z9Zq7XVsvwv15xuuuoPZ7rG0tXqn9JZOVyAIKBiCioMgxBJ/BWTDFCxFeCvVH4obRIcd8Dd4R0/juPrAYGkxqs7fugdXEr/wfZ8bQ+27/v9uS9/v/ble4wbF1atvKpOEUIIIYQQQshYSK63v1BkCCGEEEIIIWMq94rM+vxmZV71AAAAAMCot87bX/qKDAAAAACMKUGHAAAAADCaBR0CAAAAwGgWdDhgbtINrchxKfZYvSZHmPx2NXoiyqbQohatTqvTi5sDPzcz2aFV+W7tvWQMV+y7n1WTIy1663CzNhT3zxPOu/V5qlnPRQfeCwAAAACGCTr0iazT0hNtyq7t1vXrLi3ZUaOQbwb3Fk2Na1JWe7fS8+xaGuv3Oa9Z+xq15oyhA+We+2pu6ZpxW0Zzh/JzbJoRadeq061KrPDuKjp0sLJbZ0sdWrnHrGl+9wIAAACAYYIOvR5LaNKXhYZKGtqVaenS/kyLXt0yuH9wkRmuRs8ccmvb9XZdvNqkZWEmTQxr0MJki17a6d17S9O0FLcKO9q1/aBVrwe9BwAAAAAMCDr0euGYoR1FrTpe3KhlxV0qKbRr0a6agf3/KTK+P0lzKLzylk5VuhXzvUnjB3aPbOrnu19IXKOyPO3aTJEBAAAA8DBBh95isfKcR4mFLfo6zaZ5Pxi6VOPS2u9qNXNgP9IiMyHC7C1F7TpZYSgh1645UUHOxdRrRpahP6tbtHpfrZ4cugcAAAAAf8MGm0waF+dQTLmhXacdWrTFoik7ncqwtiv6kE1v9L3YP8IiE27R04lObTN3K7/IqTVJ5oD9s8kOrc53K+n3NiUWtWh9Vr3mxQ4+9QEAAACA/zB0MD7crOn7DWVecSnqR6tmhZk0KbpeH1d0KeuMU6F7fGVkJEXGpJB4uxYXdKrUftNbgur18pCnMbNSnPqooE0ZJYZSz7Xos5+ceifBotkRgecAAAAAIEDgwKTHo+q05Hy3TpW6tD3Hrld21+u1FLs+uNita9VuxWdb9dQIisyjkXVakOXSEeff+rXApoXxD3jSElOn6UcNlbX16ES+Xcu3BjkDAAAAAIMCB76C0qyDnrtq7u3V3X96dftuvzu9Um9vt/J+c2rxCIrM7LQmbSj9S61Wl96Pq3noVypPjK5VaNkdZZy+oQ93Bz8DAAAAAH0CLmLqNfPITVU3eZSY69S7KTa9eY9DWyu7dPSyS18lPazIWLX8ZJsOmD1KzazVnAiTJvjvw00al2bXgliz5vfNzJoc41BS8y2l5zdo+Ta/swAAAAAwlP/F1IQGLbvQI1NFo1butQz59jCz3j7VroySNmUctw8UmdsqsXYov9xQ8mVDey+4FX24Tu9lu7Wrqke1HT0q+8NQ2pX+fZ+zLm09blNIerM2/uLWgb65R/sudyqvrElrUy2ayzsyAAAAAB7E/2JavFWLfzYUfahO8+N8///F76CX7+X8NdmNWpdp06SoBn1ywdDuco8yBqR7C8uOo3VakePSF0X35wEutioxx6Yp3zoUWuBW0sA8zVtoNqab9Xx04O8EAAAAgGGCDgEAAABgNAs6BAAAAIDRLOgQAAAAAEYz349PTzTdfxkfAAAAAEYxX3/pKzJ5VZ0ihBBCCCGEkLGQ3KpO/Qu7w7+I+7IgIAAAAABJRU5ErkJggg==" InformativeScreenshot="84dd36c8818953c25706de2a9b2e57be.png" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='ComboLBox' idx='*' /&gt;" SearchSteps="Selector, FuzzySelector" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                  <If Condition="[in_isEnvProduction.ToLower.Trim=&quot;yes&quot;]" DisplayName="If- Is Production?" sap:VirtualizedContainerService.HintSize="1258.4,52.8" sap2010:WorkflowViewState.IdRef="If_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="400,269.6" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NClick ClickType="Single" DisplayName="Click 'Production'" sap:VirtualizedContainerService.HintSize="337.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Version="V1">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="147, 227, 819, 24" ElementType="RadioButton" FriendlyName="'Production'" FullSelectorArgument="&lt;wnd ctrlid='*' title='Production' /&gt;&lt;ctrl name='Production' role='radio button' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='*' title='Production' /&gt;&lt;ctrl name='Production' role='radio button' automationid='' check:fulltext='Production' /&gt;" Guid="ac6cb3db-7523-4b8f-8adc-c3cd16b12e84" ImageBase64="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" InformativeScreenshot="74697617ddc15169aa724f875c410110.png" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='libui_uiWindowClass' title='Toolkit v6  |  PHASE-2' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="400,104.8" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <uix:NClick ClickType="Single" DisplayName="Click 'Validate and'" sap:VirtualizedContainerService.HintSize="1258.4,52.8" sap2010:WorkflowViewState.IdRef="NClick_6" InteractionMode="WindowMessages" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable DesignTimeRectangle="45, 722, 930, 29" ElementType="Button" FriendlyName="'Validate and'" FullSelectorArgument="&lt;wnd ctrlid='102' title='Validate and upload to S3' /&gt;&lt;ctrl name='Validate and upload to S3' role='push button' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='102' title='Validate and upload to S3' /&gt;&lt;ctrl name='Validate and upload to S3' role='push button' automationid='' check:text='Validate and upload to S3' /&gt;" Guid="e0259816-7647-4e1c-b9cc-b56832fd22b7" ImageBase64="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" InformativeScreenshot="6526a2c6d6c3ec81826448f077b694ba.png" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='libui_uiWindowClass' title='Toolkit v6  |  PHASE-2' /&gt;" SearchSteps="Selector, FuzzySelector, Image" />
+                    </uix:NClick.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uix:NClick>
+                  <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ToolkitWaitTime" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Shared" sap:VirtualizedContainerService.HintSize="1258.4,172" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+                    <ui:GetRobotAsset.Value>
+                      <OutArgument x:TypeArguments="x:String">[ToolkitWaitTimeString]</OutArgument>
+                    </ui:GetRobotAsset.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:GetRobotAsset>
+                  <Assign sap:VirtualizedContainerService.HintSize="1258.4,82.4" sap2010:WorkflowViewState.IdRef="Assign_25">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Double">[ToolkitWaitTime]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Double">[Convert.ToInt32(ToolkitWaitTimeString)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Pick sap:VirtualizedContainerService.HintSize="1258.4,579.2" sap2010:WorkflowViewState.IdRef="Pick_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <PickBranch sap:VirtualizedContainerService.HintSize="601.6,532.8" sap2010:WorkflowViewState.IdRef="PickBranch_1">
+                      <PickBranch.Trigger>
+                        <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Success'" sap:VirtualizedContainerService.HintSize="552,250.4" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Timeout="[ToolkitWaitTime+10]" Version="V1">
+                          <uix:NCheckState.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="23, 50, 67, 26" ElementType="Text" FriendlyName="'Success'" FullSelectorArgument="&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Success' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Success' role='text' automationid='' check:text='Success' /&gt;" Guid="6e80f588-4663-444f-8206-02065ce000b4" ImageBase64="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" InformativeScreenshot="0825522678b26a8eb2c63cabbd4b59ae.png" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='#32770' title='toolkit-v6-phase2.exe' /&gt;" SearchSteps="Selector, FuzzySelector" />
+                          </uix:NCheckState.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NCheckState>
+                      </PickBranch.Trigger>
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_23">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[bolSuccessfulUpload]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </PickBranch>
+                    <PickBranch sap:VirtualizedContainerService.HintSize="483.2,532.8" sap2010:WorkflowViewState.IdRef="PickBranch_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <PickBranch.Trigger>
+                        <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Error'" sap:VirtualizedContainerService.HintSize="212.8,52.8" sap2010:WorkflowViewState.IdRef="NCheckState_4" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Timeout="[ToolkitWaitTime]" Version="V1">
+                          <uix:NCheckState.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="23, 50, 44, 26" ElementType="Text" FriendlyName="'Error'" FullSelectorArgument="&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Error' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Error' role='text' automationid='' check:text='Error' /&gt;" Guid="af4987f2-b710-4c2c-a546-4b0669e0dcfc" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAeCAYAAABqpJ3BAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQ5SURBVFhH7ZZfTFtVHMd9MDHRtyU+EGKMi8liTHwx0fhvuuCiidt0mhiRReNgU9lwm8E5pm6IYQlZ9s84YaAwcBuOvy1j60YplLGVtkwCA7bJ39KWtlBa/hb6/+O5be3KeBoPwgyf5Pdwz/mee+/n3nPPuQ/xgLMisNSsCCw1KwJLzYrAUvP/EQj6/XimXBitUwxa7i0X9hk/7kAkvIyICrgsNm4UynhmYwmr1p2OqWJR1aRVW9BNRMLLiLsCZivaU5XEfdRAWsnfVGrN1EXLRrfNzbgvEl5GzBfIryJuq55fW8cZi7Qvd+5bwD87h6PfzIVWJ72Ddtq7TJQpDVSr7QzO+hkfHaOja4SGDgdOq43apkHRP4ymdxqHGB8MBHCZrDS3SO394VINUNYxiXHy7isO5cQ9Nbfbab09xtCARWRFTmllyDoXSS1CwDVsQ59fSfwn18jMayY9+yKrN1XzXJKOCjHNbja2kP7DZZ7ffZ0L8kZe3FIm+pXsOG2gzetjyuZAU3SJ97ad54lNpaLvHE9tLuXx9DbyNE4cs+GVIuD1YqhSsGGXig+zrpFbqBTZ86LUyJvsoYzE4gTyyohPKOLRVC0ZihGckx7Gp3xilQoyLAl8dYaH36niycMDtBtnRL+XGbGEjQxakP1Uwpr1CvbWmtFNukXfDDabmZN7/uSlDB0HGpyh60QFkkp4JLGOt4pMIivlfXi8wVBGYr5Abjlxb5ey5mMZa7+oJUGqVAUJWbeQ3ZlmUspJArkVxK+rIanUgNrpDZ8gglUSSKvm6c+uc8wwJz78yMVcTjobdCRuKGTjcSOXBjy4Qh1BAj43lhYtqbuVbD9xh6vjMQKJMl7L7OCMxR1K38t8gbwK4t6/yOZsLQeL28mRquQmOfJh2qxuZqWcJCBWq/gPmsm55sAUHh4lJPDtZV7I6KZNHEcvO2Lm6rkGVq+V86N+hp7w3YcJimkz3c+R9FpSvrtBQV+MwOcqthQYuB2J3sviplBBFfHJen7RL8yFBA4qeeVQLwPiOPp+jAaUBfU89oaa302zWCLNYaR5b6IgQ872dC1HOmIEvr5K8lkz5nBwAf+dwPAQqiIVq16v52SvC5M/0h5CCPiHyN1Xw7a9Ok50LUeBCTFOrublV4tJkU/yV+zAgLCx3iJzt4KtWR2UW5ejgM+D6WYPR1N/49kkDUdbnBhDHX68c06uHKth/Z5mdpVbGPEsVkD6iN+V8ea+JnYe1/JNTOWLD7ZL7ESLFhDMTkxzR91G9n4Fn2Y3kRw6t4b0Y2pSsjR8X2mkUaxcEvct4HaM06ds4cssFYn76xfUoSujtI6CxzlBv0rPjlN91PW5mI6M/5eJ7h7OlneSKbMh4uL5zifo82PXidXtZ3X03EkHGsV+MkbnaMxOLP6O7fp2Dv9xWzw8J+HdYSFRgQeVFYGlZkVgaYF/ANSTLkVeXD+gAAAAAElFTkSuQmCC" InformativeScreenshot="e4bf4409e96c82bceeeee63c033cc457.png" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='#32770' title='toolkit-v6-phase2.exe' /&gt;" SearchSteps="Selector, FuzzySelector" />
+                          </uix:NCheckState.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NCheckState>
+                      </PickBranch.Trigger>
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_24">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Boolean">[bolSuccessfulUpload]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </PickBranch>
+                  </Pick>
+                  <If Condition="[bolSuccessfulUpload]" sap:VirtualizedContainerService.HintSize="1258.4,378.4" sap2010:WorkflowViewState.IdRef="If_28">
+                    <If.Then>
+                      <Sequence DisplayName="Successful Upload" sap:VirtualizedContainerService.HintSize="400,83.2" sap2010:WorkflowViewState.IdRef="Sequence_65">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Boolean" Name="bol_AllFilesUploaded" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:UiElementExists DisplayName="Element Exists 'text All'" Exists="[bol_AllFilesUploaded]" sap:VirtualizedContainerService.HintSize="337.6,116.8" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+                          <ui:UiElementExists.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="77160d40-cf9d-4231-8b9d-8719d5fec76d" InformativeScreenshot="04202041fac88cb5272d87c5e1e6f6c1" Selector="&lt;wnd app='toolkit-v6-phase2.exe' cls='#*' title='toolkit-v6-phase2.exe' /&gt;&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='All files uploaded*' role='text' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:UiElementExists.Target>
+                        </ui:UiElementExists>
+                        <If Condition="[bol_AllFilesUploaded]" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="If_20">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="400,501.6" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="337.6,102.4" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;All files in &quot;+ in_SetFolderPath+&quot; uploaded successfully to Toolkit&quot;]" />
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="337.6,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Framework\Logs_Generation.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_LogDir">[in_LogDir]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Msg">["All files in "+ in_SetFolderPath+" uploaded successfully to Toolkit"]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <Assign sap:VirtualizedContainerService.HintSize="337.6,71.2" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">[bol_ToolkitUploadSuccess]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </If.Then>
+                          <If.Else>
+                            <Sequence sap:VirtualizedContainerService.HintSize="200,85.6" sap2010:WorkflowViewState.IdRef="Sequence_64">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </Sequence>
+                          </If.Else>
+                        </If>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="Failed Upload" sap:VirtualizedContainerService.HintSize="400,83.2" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="str_ToolkitError" />
+                          <Variable x:TypeArguments="x:Boolean" Name="bol_failedFolderExists" />
+                          <Variable x:TypeArguments="x:Boolean" Name="bol_todaysDatefolderExists_F" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="337.6,71.2" sap2010:WorkflowViewState.IdRef="Assign_15">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[bol_ToolkitUploadSuccess]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Error'" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="NCheckState_5" ScopeIdentifier="fe3e24d0-9344-4a48-b4bf-3e7dde05df57" Timeout="60" Version="V1">
+                          <uix:NCheckState.IfExists>
+                            <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="400,92.8" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Default="Study not selected" Name="ErrorMsg" />
+                                <Variable x:TypeArguments="x:Boolean" Name="ErrorStudyMustSelected" />
+                                <Variable x:TypeArguments="x:Boolean" Name="CannotFindTheInputFile" />
+                                <Variable x:TypeArguments="x:Boolean" Name="bol_IpBlacklisted" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:UiElementExists DisplayName="Element Exists 'text At'" Exists="[bol_IpBlacklisted]" sap:VirtualizedContainerService.HintSize="2054.4,116.8" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="80200d13-dff5-4836-a476-a47662207cd2" InformativeScreenshot="028fe85193e490454c70d8ee9cb08d5e" Selector="&lt;wnd app='toolkit-v6-phase2.exe' cls='*' title='toolkit-v6-phase2.exe' /&gt;&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Err getting backend token: Post &amp;quot;https://api-qa.siterx.com/api/a*' role='text' text='Err getting backend t*s://api-qa.siterx.com/api/auth/admin/login&amp;quot;: dial * connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.' /&gt;" TimeoutMS="2000">
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                              <If Condition="[bol_IpBlacklisted]" sap:VirtualizedContainerService.HintSize="2054.4,1632.8" sap2010:WorkflowViewState.IdRef="If_24">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="400,196" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign sap:VirtualizedContainerService.HintSize="337.6,71.2" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[str_ToolkitError]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String" xml:space="preserve"> IP not whitelisted</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="1610.4,1462.4" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:Boolean" Name="bol_InvalidSystemName" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:UiElementExists DisplayName="Element Exists 'text Error'" Exists="[bol_InvalidSystemName]" sap:VirtualizedContainerService.HintSize="1548,116.8" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
+                                      <ui:UiElementExists.Target>
+                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="52e3e941-cc01-4204-b0ef-dc0923956d31" InformativeScreenshot="6407539a05d48b1cd157fc3f7c0123b6" Selector="&lt;wnd app='toolkit-v6-phase2.exe' cls='#*' title='toolkit-v6-phase2.exe' /&gt;&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Hierarchy check failed: Invalid system folder nam*' role='text' text='Hierarchy check failed: Invalid system fold*' /&gt;" TimeoutMS="2000">
+                                          <ui:Target.WaitForReady>
+                                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                                          </ui:Target.WaitForReady>
+                                        </ui:Target>
+                                      </ui:UiElementExists.Target>
+                                    </ui:UiElementExists>
+                                    <If Condition="[bol_InvalidSystemName]" sap:VirtualizedContainerService.HintSize="1548,1180.8" sap2010:WorkflowViewState.IdRef="If_23">
+                                      <If.Then>
+                                        <Sequence sap:VirtualizedContainerService.HintSize="400,196" sap2010:WorkflowViewState.IdRef="Sequence_67">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap:VirtualizedContainerService.HintSize="337.6,71.2" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[str_ToolkitError]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">Invalid EHR Name</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence sap:VirtualizedContainerService.HintSize="1104,1010.4" sap2010:WorkflowViewState.IdRef="Sequence_72">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="x:Boolean" Name="bol_NoFilestoUpload" />
+                                          </Sequence.Variables>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:UiElementExists DisplayName="Element Exists 'text No'" Exists="[bol_NoFilestoUpload]" sap:VirtualizedContainerService.HintSize="1041.6,116.8" sap2010:WorkflowViewState.IdRef="UiElementExists_9">
+                                            <ui:UiElementExists.Target>
+                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c00e3e08-5dbd-4f4a-add9-7702a96aa876" InformativeScreenshot="0ebd94cba8a27961864ebd32ea993876" Selector="&lt;wnd app='toolkit-v6-phase2.exe' cls='#32770' title='toolkit-v6-phase2.exe' /&gt;&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='No files to upload or all files already uploaded.' role='text' /&gt;" TimeoutMS="1000">
+                                                <ui:Target.WaitForReady>
+                                                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                </ui:Target.WaitForReady>
+                                              </ui:Target>
+                                            </ui:UiElementExists.Target>
+                                          </ui:UiElementExists>
+                                          <If Condition="[bol_NoFilestoUpload]" sap:VirtualizedContainerService.HintSize="1041.6,728.8" sap2010:WorkflowViewState.IdRef="If_22">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <If.Then>
+                                              <Sequence sap:VirtualizedContainerService.HintSize="304,156" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:String">[str_ToolkitError]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:String">No pending files to upload</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                              </Sequence>
+                                            </If.Then>
+                                            <If.Else>
+                                              <Sequence sap:VirtualizedContainerService.HintSize="693.6,558.4" sap2010:WorkflowViewState.IdRef="Sequence_71">
+                                                <Sequence.Variables>
+                                                  <Variable x:TypeArguments="x:Boolean" Name="bol_errInInputFolder" />
+                                                </Sequence.Variables>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:UiElementExists DisplayName="Element Exists 'text Error'" Exists="[bol_errInInputFolder]" sap:VirtualizedContainerService.HintSize="652,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_10">
+                                                  <ui:UiElementExists.Target>
+                                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="96c6d76b-0049-48fb-af04-400d258ebd12" InformativeScreenshot="3617f359c26a3a791453564d169ef921" Selector="&lt;wnd app='toolkit-v6-phase2.exe' cls='#32770' title='toolkit-v6-phase2.exe' /&gt;&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Error in input folder*' role='text' /&gt;" TimeoutMS="1000">
+                                                      <ui:Target.WaitForReady>
+                                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                      </ui:Target.WaitForReady>
+                                                    </ui:Target>
+                                                  </ui:UiElementExists.Target>
+                                                </ui:UiElementExists>
+                                                <If Condition="[bol_errInInputFolder]" sap:VirtualizedContainerService.HintSize="652,316.8" sap2010:WorkflowViewState.IdRef="If_21">
+                                                  <If.Then>
+                                                    <Sequence sap:VirtualizedContainerService.HintSize="304,156" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="x:String">[str_ToolkitError]</OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="x:String">Invalid set folder</InArgument>
+                                                        </Assign.Value>
+                                                      </Assign>
+                                                    </Sequence>
+                                                  </If.Then>
+                                                  <If.Else>
+                                                    <Sequence sap:VirtualizedContainerService.HintSize="304,156" sap2010:WorkflowViewState.IdRef="Sequence_70">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Assign sap:VirtualizedContainerService.HintSize="262.4,61.6" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="x:String">[str_ToolkitError]</OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="x:String">Uncaptured exception</InArgument>
+                                                        </Assign.Value>
+                                                      </Assign>
+                                                    </Sequence>
+                                                  </If.Else>
+                                                </If>
+                                              </Sequence>
+                                            </If.Else>
+                                          </If>
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </uix:NCheckState.IfExists>
+                          <uix:NCheckState.IfNotExists>
+                            <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="400,92.8" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="337.6,71.2" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[str_ToolkitError]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">Uncaptured error</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </uix:NCheckState.IfNotExists>
+                          <uix:NCheckState.Target>
+                            <uix:TargetAnchorable DesignTimeRectangle="23, 50, 44, 26" ElementType="Text" FriendlyName="'Error'" FullSelectorArgument="&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Error' role='text' /&gt;" FuzzySelectorArgument="&lt;wnd cls='DirectUIHWND' /&gt;&lt;ctrl name='toolkit-v6-phase2.exe' role='pane' /&gt;&lt;ctrl name='Error' role='text' automationid='' check:text='Error' /&gt;" Guid="af4987f2-b710-4c2c-a546-4b0669e0dcfc" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAeCAYAAABqpJ3BAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQ5SURBVFhH7ZZfTFtVHMd9MDHRtyU+EGKMi8liTHwx0fhvuuCiidt0mhiRReNgU9lwm8E5pm6IYQlZ9s84YaAwcBuOvy1j60YplLGVtkwCA7bJ39KWtlBa/hb6/+O5be3KeBoPwgyf5Pdwz/mee+/n3nPPuQ/xgLMisNSsCCw1KwJLzYrAUvP/EQj6/XimXBitUwxa7i0X9hk/7kAkvIyICrgsNm4UynhmYwmr1p2OqWJR1aRVW9BNRMLLiLsCZivaU5XEfdRAWsnfVGrN1EXLRrfNzbgvEl5GzBfIryJuq55fW8cZi7Qvd+5bwD87h6PfzIVWJ72Ddtq7TJQpDVSr7QzO+hkfHaOja4SGDgdOq43apkHRP4ymdxqHGB8MBHCZrDS3SO394VINUNYxiXHy7isO5cQ9Nbfbab09xtCARWRFTmllyDoXSS1CwDVsQ59fSfwn18jMayY9+yKrN1XzXJKOCjHNbja2kP7DZZ7ffZ0L8kZe3FIm+pXsOG2gzetjyuZAU3SJ97ad54lNpaLvHE9tLuXx9DbyNE4cs+GVIuD1YqhSsGGXig+zrpFbqBTZ86LUyJvsoYzE4gTyyohPKOLRVC0ZihGckx7Gp3xilQoyLAl8dYaH36niycMDtBtnRL+XGbGEjQxakP1Uwpr1CvbWmtFNukXfDDabmZN7/uSlDB0HGpyh60QFkkp4JLGOt4pMIivlfXi8wVBGYr5Abjlxb5ey5mMZa7+oJUGqVAUJWbeQ3ZlmUspJArkVxK+rIanUgNrpDZ8gglUSSKvm6c+uc8wwJz78yMVcTjobdCRuKGTjcSOXBjy4Qh1BAj43lhYtqbuVbD9xh6vjMQKJMl7L7OCMxR1K38t8gbwK4t6/yOZsLQeL28mRquQmOfJh2qxuZqWcJCBWq/gPmsm55sAUHh4lJPDtZV7I6KZNHEcvO2Lm6rkGVq+V86N+hp7w3YcJimkz3c+R9FpSvrtBQV+MwOcqthQYuB2J3sviplBBFfHJen7RL8yFBA4qeeVQLwPiOPp+jAaUBfU89oaa302zWCLNYaR5b6IgQ872dC1HOmIEvr5K8lkz5nBwAf+dwPAQqiIVq16v52SvC5M/0h5CCPiHyN1Xw7a9Ok50LUeBCTFOrublV4tJkU/yV+zAgLCx3iJzt4KtWR2UW5ejgM+D6WYPR1N/49kkDUdbnBhDHX68c06uHKth/Z5mdpVbGPEsVkD6iN+V8ea+JnYe1/JNTOWLD7ZL7ESLFhDMTkxzR91G9n4Fn2Y3kRw6t4b0Y2pSsjR8X2mkUaxcEvct4HaM06ds4cssFYn76xfUoSujtI6CxzlBv0rPjlN91PW5mI6M/5eJ7h7OlneSKbMh4uL5zifo82PXidXtZ3X03EkHGsV+MkbnaMxOLP6O7fp2Dv9xWzw8J+HdYSFRgQeVFYGlZkVgaYF/ANSTLkVeXD+gAAAAAElFTkSuQmCC" InformativeScreenshot="e4bf4409e96c82bceeeee63c033cc457.png" ScopeSelectorArgument="&lt;wnd app='toolkit-v6-phase2.exe' cls='#32770' title='toolkit-v6-phase2.exe' /&gt;" SearchSteps="Selector, FuzzySelector" />
+                          </uix:NCheckState.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NCheckState>
+                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch.Try>
+                            <Sequence sap:VirtualizedContainerService.HintSize="906.4,2341.6" sap2010:WorkflowViewState.IdRef="Sequence_82">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:Boolean" Name="bol_TKErrorScreenFolder" />
+                                <Variable x:TypeArguments="x:Boolean" Name="bol_EHRfolder" />
+                                <Variable x:TypeArguments="x:Boolean" Name="bol_Today" />
+                                <Variable x:TypeArguments="x:String" Name="str_ToolkitErrorScreenPath" />
+                                <Variable x:TypeArguments="x:String" Name="str_Toolkiterrorpath" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:FolderExistsX DisplayName="Folder Exists" Exists="[bol_TKErrorScreenFolder]" sap:VirtualizedContainerService.HintSize="844,144" sap2010:WorkflowViewState.IdRef="FolderExistsX_12" Path="[in_ArchivefolderPath+&quot;\ToolkitErrScreen&quot;]" />
+                              <If Condition="[bol_TKErrorScreenFolder]" sap:VirtualizedContainerService.HintSize="844,385.6" sap2010:WorkflowViewState.IdRef="If_25">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="400,116" sap2010:WorkflowViewState.IdRef="Sequence_76">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="400,215.2" sap2010:WorkflowViewState.IdRef="Sequence_77">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_12" Path="[in_ArchivefolderPath+&quot;\ToolkitErrScreen&quot;]" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <ui:FolderExistsX DisplayName="Folder Exists" Exists="[bol_EHRfolder]" sap:VirtualizedContainerService.HintSize="844,144" sap2010:WorkflowViewState.IdRef="FolderExistsX_13" Path="[in_ArchivefolderPath+&quot;\ToolkitErrScreen\&quot;+in_EhrName]" />
+                              <If Condition="[bol_EHRfolder]" sap:VirtualizedContainerService.HintSize="844,385.6" sap2010:WorkflowViewState.IdRef="If_26">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="400,116" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="400,215.2" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_13" Path="[in_ArchivefolderPath+&quot;\ToolkitErrScreen\&quot;+in_EhrName]" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <ui:FolderExistsX DisplayName="Folder Exists" Exists="[bol_Today]" sap:VirtualizedContainerService.HintSize="844,144" sap2010:WorkflowViewState.IdRef="FolderExistsX_14" Path="[in_ArchivefolderPath+&quot;\ToolkitErrScreen\&quot;+in_EhrName+&quot;\&quot;+DateTime.Now.ToString(&quot;yyyyMMdd&quot;)]" />
+                              <If Condition="[bol_Today]" sap:VirtualizedContainerService.HintSize="844,385.6" sap2010:WorkflowViewState.IdRef="If_27">
+                                <If.Then>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="400,116" sap2010:WorkflowViewState.IdRef="Sequence_80">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Sequence>
+                                </If.Then>
+                                <If.Else>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="400,215.2" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="337.6,90.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_14" Path="[in_ArchivefolderPath+&quot;\ToolkitErrScreen\&quot;+in_EhrName+&quot;\&quot;+DateTime.Now.ToString(&quot;yyyyMMdd&quot;)]" />
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <Assign sap:VirtualizedContainerService.HintSize="844,71.2" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[str_ToolkitErrorScreenPath]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[in_ArchivefolderPath+"\ToolkitErrScreen\"+in_EhrName+"\"+DateTime.Now.ToString("yyyyMMdd")]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="844,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[str_ToolkitErrorScreenPath]</InArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[str_Toolkiterrorpath]</InOutArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="619.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="Framework\Logs_Generation.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_LogDir">[in_LogDir]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_Msg">["Toolkit error screen shot Captured at "+str_Toolkiterrorpath]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </Sequence>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="664,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <Sequence sap:VirtualizedContainerService.HintSize="375.2,340.8" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Error" Message="[&quot;Failed to save Toolkit error screenshot&quot;]" />
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Framework\Logs_Generation.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_LogDir">[in_LogDir]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_Msg">Failed to save Toolkit error screenshot</InArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                </Sequence>
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Toolkit upload failed due to: &quot;+str_ToolkitError]">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:LogMessage>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="337.6,62.4" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Framework\Logs_Generation.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_LogDir">[in_LogDir]</InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_Msg">["Files in "+ in_SetFolderPath+" failed to upload in toolkit since: "+str_ToolkitError]</InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="195, 195, 1020, 799" FilePath="[in_ToolkitLocation]" IconBase64="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" InformativeScreenshot="a3523bf77a56c939fa835bbde215f5d6.png" IsExactTitleEnabled="True" Selector="&lt;wnd app='toolkit-v6-phase2.exe' cls='libui_uiWindowClass' title='Toolkit v6  |  PHASE-2'/&gt;" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1420,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[bol_ToolkitUploadSuccess]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+              </Assign.Value>
+            </Assign>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <TryCatch DisplayName="Try Catch Move to Archive Folder" sap:VirtualizedContainerService.HintSize="1453.6,344.8" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Move to Archive folder.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="378.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Move to Archive folder\Move to Archive folder.xaml">
+          <ui:InvokeWorkflowFile.Arguments>
+            <InArgument x:TypeArguments="x:String" x:Key="in_SetFolderPath">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SetFolderPath" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_RQfolderPath">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ArchivefolderPath" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_EHRName">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_EhrName" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_LogDir">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_LogDir" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:Boolean" x:Key="in_bolToolkituploadSuccess">
+              <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="bol_ToolkitUploadSuccess" />
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_StudyName">
+              <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StudyName" />
+            </InArgument>
+          </ui:InvokeWorkflowFile.Arguments>
+        </ui:InvokeWorkflowFile>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Error" Message="[&quot;Move to Archive folder WF failed&quot;]" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

@@ -1,0 +1,195 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CreateFolder_PatientID" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_OutputFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_SystemName" Type="InArgument(x:String)" />
+    <x:Property Name="in_PhycisianName" Type="InArgument(x:String)" />
+    <x:Property Name="in_JobID" Type="InArgument(x:String)" />
+    <x:Property Name="argument2" Type="InArgument(x:String)" />
+    <x:Property Name="in_setNumber" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_PatientFullName" Type="InArgument(x:String)" />
+    <x:Property Name="out_PatientFolder" Type="OutArgument(x:String)" />
+    <x:Property Name="in_NPIID" Type="InArgument(x:String)" />
+    <x:Property Name="out_ReportIDFolder" Type="OutArgument(x:String)" />
+    <x:Property Name="out_NPIFolder" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1104,2361.6</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CreateFolder_PatientID_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="52">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="54">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CreateFolder_PatientID" sap:VirtualizedContainerService.HintSize="687.2,2296.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="folderExist" />
+      <Variable x:TypeArguments="x:Boolean" Name="folder1Exist" />
+      <Variable x:TypeArguments="x:Boolean" Name="folder2Exist" />
+      <Variable x:TypeArguments="x:String" Name="SetNumber" />
+      <Variable x:TypeArguments="x:Boolean" Name="SetFolderExists" />
+      <Variable x:TypeArguments="x:Boolean" Name="EhrFolderExists" />
+      <Variable x:TypeArguments="x:Boolean" Name="PhysFolderExists" />
+      <Variable x:TypeArguments="x:Boolean" Name="PatientFolderExists" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="644,69.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[SetNumber]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_setNumber.ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[SetFolderExists]" sap:VirtualizedContainerService.HintSize="644,100" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_OutputFolderPath+&quot;\&quot;+&quot;set_&quot;+SetNumber+&quot;_&quot;+in_JobId]" PathType="Folder" />
+    <If Condition="[SetFolderExists]" sap:VirtualizedContainerService.HintSize="644,422.4" sap2010:WorkflowViewState.IdRef="If_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="400,253.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="356.8,90.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_4" Path="[in_OutputFolderPath+&quot;\&quot;+&quot;set_&quot;+SetNumber+&quot;_&quot;+in_JobId]" />
+          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="356.8,32" sap2010:WorkflowViewState.IdRef="Delay_4" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[EhrFolderExists]" sap:VirtualizedContainerService.HintSize="644,100" sap2010:WorkflowViewState.IdRef="PathExists_4" Path="[in_OutputFolderPath+&quot;\&quot;+&quot;set_&quot;+SetNumber+&quot;_&quot;+in_JobId+&quot;\&quot;+in_SystemName]" PathType="Folder" />
+    <If Condition="[EhrFolderExists]" sap:VirtualizedContainerService.HintSize="644,422.4" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="400,253.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="356.8,90.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[in_OutputFolderPath+&quot;\&quot;+&quot;set_&quot;+SetNumber+&quot;_&quot;+in_JobId+&quot;\&quot;+in_SystemName]" />
+          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="356.8,32" sap2010:WorkflowViewState.IdRef="Delay_1" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists" Exists="[PatientFolderExists]" sap:VirtualizedContainerService.HintSize="644,100" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[in_OutputFolderPath+&quot;\&quot;+&quot;set_&quot;+SetNumber+&quot;_&quot;+in_JobId+&quot;\&quot;+in_SystemName+&quot;\&quot;+&quot;\&quot;+in_NPIID+&quot;\&quot;+in_PatientFullName+&quot;\&quot;]" PathType="Folder" />
+    <If Condition="[PatientFolderExists]" sap:VirtualizedContainerService.HintSize="644,422.4" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Throw Exception="[new BusinessRuleException(&quot;Patient already exist&quot;)]" sap:VirtualizedContainerService.HintSize="200,32" sap2010:WorkflowViewState.IdRef="Throw_1" />
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="400,253.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="356.8,90.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[in_OutputFolderPath+&quot;\&quot;+&quot;set_&quot;+SetNumber+&quot;_&quot;+in_JobId+&quot;\&quot;+in_SystemName+&quot;\&quot;+&quot;\&quot;+in_NPIID+&quot;\&quot;+in_PatientFullName]" />
+          <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="356.8,32" sap2010:WorkflowViewState.IdRef="Delay_3" />
+        </Sequence>
+      </If.Else>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="644,69.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_PatientFolder]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_OutputFolderPath+"\"+"set_"+SetNumber+"_"+in_JobId+"\"+in_SystemName+"\"+in_NPIID+"\"+in_PatientFullName]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="644,69.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_NPIFolder]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_OutputFolderPath+"\"+"set_"+SetNumber+"_"+in_JobId+"\"+in_SystemName+"\"+in_NPIID]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="644,69.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[out_ReportIDFolder]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_OutputFolderPath+"\"+"set_"+SetNumber+"_"+in_JobId]</InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
